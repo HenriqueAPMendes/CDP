@@ -80,7 +80,7 @@ int main(){
         exit(0);
     }
 
-    cout << pow(2, cnt)%998244353 << endl;
+    cout << (int)pow(2, cnt)%998244353 << endl;
 
     return 0;
 }
