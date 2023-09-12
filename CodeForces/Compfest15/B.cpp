@@ -1,10 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int combine(int cnt){
-    return 1;
-}
-
 int main(){
     cin.tie(0);
     ios_base::sync_with_stdio(0);
@@ -57,7 +53,7 @@ int main(){
         
         if (itX->first == itY->first){
             if (itX->second - itY->second > 0) cnt++;
-            else if (itX->second - itY->second > 0){
+            else if (itX->second - itY->second < 0){
                 cout << 0 << endl;
                 exit(0);
             }
@@ -84,7 +80,7 @@ int main(){
         exit(0);
     }
 
-    cout << pow(2, cnt) << endl;
+    cout << pow(2, cnt)%998244353 << endl;
 
     return 0;
 }
