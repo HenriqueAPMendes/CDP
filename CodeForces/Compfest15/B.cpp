@@ -80,7 +80,13 @@ int main(){
         exit(0);
     }
 
-    cout << (int)pow(2, cnt)%998244353 << endl;
+    int res = 1;
+
+    for ( ;cnt > 0; cnt--){
+        res = (res*2)%998244353;
+    }
+
+    cout << res << endl;
 
     return 0;
 }
