@@ -1,0 +1,16 @@
+Algoritmos para fazer resumo
+
+Básicos
+    -quick-sort
+    -merge-sort
+    -binary search
+    -BFS
+    -DFS
+    -Heap-sort
+
+Caminhos mínimos
+    -Floyd-Warshall
+    -Dijkstra
+
+Outros
+    -Exponenciação modular rápida

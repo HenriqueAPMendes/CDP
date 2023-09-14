@@ -4,6 +4,7 @@ using ll = long long;
 const int oo = 987654321;
 
 // Floyd-Warshall algorithm
+// NAO FINALIZADO
 
 int main(){
     cin.tie(0);
