@@ -5,7 +5,7 @@ using namespace std;
 
 // terminar
 
-vector<int> adj(MAX);
+vector<int> adj(MAX); // corrigir aqui?
 int vis[MAX];
 
 int grundy(int u){
@@ -29,7 +29,7 @@ int main(){
             u--; v--;
             adj[u].push_back(v); adj[v].push_back[u];
         }
-        // mais algo aqui
+        // mais algo aqui?
     }
-    // mais algo aqui
+    // mais algo aqui?
 }
