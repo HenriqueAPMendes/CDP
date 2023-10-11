@@ -25,7 +25,6 @@ int main() {
             cin >> l >> k;
             l--; // 0-based indexing
 
-            // Calcula o Prefix Bitwise AND
         
             for (int i = l+1; i < n; i++) {
                 prefix_and[i] = a[i] & prefix_and[i - 1];
@@ -36,19 +35,7 @@ int main() {
             }
 
 
-
-            // binary search on answer
-            while(left < right){
-                if (prefix_and[mid] < k)
-                    right = mid - 1;
-                else
-                    left = mid + 1;
-            }
-
-
             if (a[mid] >= k) {
-                cout << mid << " ";
-            } else {
                 cout << -1 << " ";
             }
         }
