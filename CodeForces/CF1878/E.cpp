@@ -1,40 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define MAX_SIZE 212345
+int main() {
+    int t;
+    cin >> t;
 
-long long a[MAX_SIZE];
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        vector<int> prefix_and(n);
 
-int main(){
-    cin.tie(0);
-    ios_base::sync_with_stdio(0);
-
-    int t; cin >> t;
-    while(t--){
-        int n; cin >> n;
-
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             cin >> a[i];
-        
-        int q; cin >> q;
-
-        while (q--){
-            int l, k; cin >> l >> k;
-            l--;
-
-            if (k > a[l]) {
-                cout << -1 << " ";
-                continue;
-            }
-
-            int test = a[l];
-            while(test >= k && l < n){
-                test &= a[l++];
-            }
-            if (l == n && test >= k) cout << l << " ";
-            else cout << l-1 << " ";
+            prefix_and[i] = a[i];
         }
-        cout << endl;   
+
+
+        int q;
+        cin >> q;
+
+        for (int i = 0; i < q; i++) {
+            int l, k;
+            cin >> l >> k;
+            l--; // 0-based indexing
+
+            // Calcula o Prefix Bitwise AND
+        
+            for (int i = l+1; i < n; i++) {
+                prefix_and[i] = a[i] & prefix_and[i - 1];
+                if (prefix_and[i] < k) {
+                    cout << i-1 << " ";
+                    break;    
+                }
+            }
+
+
+
+            // binary search on answer
+            while(left < right){
+                if (prefix_and[mid] < k)
+                    right = mid - 1;
+                else
+                    left = mid + 1;
+            }
+
+
+            if (a[mid] >= k) {
+                cout << mid << " ";
+            } else {
+                cout << -1 << " ";
+            }
+        }
+        cout << endl;
     }
 
     return 0;
