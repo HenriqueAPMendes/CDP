@@ -1,40 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> pressed_notes(12, 0);
-vector<string> notes = {"si", "do", "do#", "re", "re#", "mi", "fa", "fa#", "sol", "sol#", "la", "la#"};
 
-int main (){
+vector<int> padrao = {1,0,1,0,1,1,0,1,0,1,0,1};
+vector<int> s_padrao = {1,0,1,0,1,1,0,1,0,1,0,1};
+vector<string> notas = {"do","do#","re","re#","mi","fa","fa#","sol","sol#","la","la#","si"};
+vector<int> vis(12, 0);
+
+bool valid_scale(){
+	for(int i = 0; i < 12; i++){   
+    if((vis[i] == 1) && (s_padrao[i] == 0))
+      return false;
+  }
+  return true;
+}
+
+int main(){
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
 
-	int N, x;
-	cin >> N;
-
-	while (N--){
-		cin >> x;
-		x %= 12;
-		pressed_notes[x] = 1;
+  int n, a;
+  cin >> n;
+	while(n--){
+		cin >> a;
+ 		vis[(a-1)%12] = 1;
 	}
 
-	for (int i = 0; i < 12; i++){
-		if (pressed_notes[i] == 1){
-			// if no forbidden notes were pressed, then belongs to major scale (tom maior)
-			if (pressed_notes[(i+1)%12] || 
-					pressed_notes[(i+3)%12] || 
-					pressed_notes[(i+6)%12] ||
-					pressed_notes[(i+8)%12] || 
-					pressed_notes[(i+10)%12]) continue;
-			
-			cout << notes[i] << endl;
-			return 0;
-			
-		
-		}
-	}
+  if(valid_scale()){
+    cout << notas[0] << endl;
+    return 0;
+  }
 
-	cout << "desafinado" << endl;
-	
-	return 0;
+  for(int i = 1; i < 12; i++){
+    for(int j = 0; j < 12; j++)
+      s_padrao[(j+i)%12] = padrao[j];
+
+      if(valid_scale()){
+        cout << notas[i] << endl;
+        return 0;
+      }
+  }
+
+  cout << "desafinado\n";
+  return 0;
 }
 
