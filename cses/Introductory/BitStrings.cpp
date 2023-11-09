@@ -3,10 +3,10 @@ using namespace std;
 
 #define mod 1000000007
 
-int binExp(int n){
+long long binExp(int n){
     if (n == 0) return 1;
     if (n%2) return (2*binExp(n-1))%mod;
-    int b = binExp(n/2)%mod;
+    long long b = binExp(n/2)%mod;
     return (b*b)%mod;
 }
 
@@ -17,6 +17,6 @@ int main(){
     int n;
     cin >> n;
 
-    cout << binExp(n)%mod << endl;
+    cout << binExp(n) << endl;
     return 0;
 }
