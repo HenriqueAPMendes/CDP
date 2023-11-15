@@ -24,6 +24,7 @@ int main(){
     int flag = -1;
 
     for (int i = 0; i < N; i++){
+        //cout << "targetin: " << g[i] << endl;
 
         if (flag != -1){
             if (m[flag][i] == g[i]){
@@ -31,13 +32,15 @@ int main(){
                 s += g[i];
     
                 ans.pop();
-                ans.push({s,flag});
+                ans.push({s,flag+1});
+                continue;
             }
         }
         flag = -1;   
         for (int j = 0; j < P; j++){
             if (m[j][i] == g[i]){
                 ans.push({g.substr(i,1), j+1});
+                //cout << "found at j = " << j << " and i = " << i << endl;
                 flag = j; break;
             }
         }
@@ -48,17 +51,17 @@ int main(){
 
     stack<pair<string,int>> inv;
 
-    for (int i = 0; i < (int)ans.size(); i++){
+    while(!ans.empty()){
         inv.push(ans.top());
         ans.pop();
     }
 
     pair<string,int> p;
 
-    for (int i = 0; i < (int)inv.size(); i++){
-        p = ans.top();
+    while(!inv.empty()){
+        p = inv.top();
         cout << p.first << " " << p.second << '\n';
-        ans.pop();
+        inv.pop();
     }
 
     return 0;
