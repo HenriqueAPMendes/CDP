@@ -19,7 +19,6 @@ int main(){
     
     cin >> g;
 
-   
 
     int flag = -1;
 
