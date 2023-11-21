@@ -1,12 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main (){
-    double degree;
-    cin >> degree;
+int gcd(int a, int b){
+    if (b == 0) return a;
+    return gcd(b, a%b);
+}
 
-    degree = min(degree, 360 - degree);
-    cout << int(360.00/degree) << endl;
+int lcm(int a, int b){
+    return (a*b)/gcd(a,b);
+}
+
+int main (){
+    int a, b;
+    char dot;
+    cin >> a >> dot >> b;
+
+    a = a*100 + b;
+
+    cout << lcm(a, 36000) / a << endl;
 
     return 0;
 }
