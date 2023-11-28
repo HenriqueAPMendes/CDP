@@ -1,9 +1,11 @@
-8
-........
-..PPP...
-..P.P...
-........
-.P...P..
-........
-...P....
-......P.
+13 7 3
+Juca Caju Olivier
+Juca Caju Gin
+Alice Bob Gina
+Alice Bob Bonnie
+Bonnie Perf Elis
+Gin Gina Ped
+Marie Olivier Zec
+Juca Caju
+Elis Ped
+Zec Perf
