@@ -74,9 +74,6 @@ int main (){
     cin >> n >> q;
     for (int i = 0; i < n; i++) cin >> a[i];
 
-    for (int i = 0; i < n; i++) cout << a[i] << ' ';
-    cout << endl;
-
     build(1,0,n-1);
     
     int a,b,k,u,op;
@@ -84,11 +81,11 @@ int main (){
         cin >> op;
         if (op == 1){
             cin >> a >> b >> u;
-            updateRange(1,0,n-1,a,b,u);
+            updateRange(1,0,n-1,a-1,b-1,u);
         }
         else{
             cin >> k;
-            cout << queryRange(1,0,n-1,k,k) << '\n';
+            cout << queryRange(1,0,n-1,k-1,k-1) << '\n';
         }
     }
 
