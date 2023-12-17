@@ -6,6 +6,8 @@ using namespace std;
 vector<vector<int>> f(MAXN, vector<int> (MAXN, 0));
 vector<vector<long long>> pre_sum(MAXN, vector<long long> (MAXN, 0));
 
+// PROVAVEL ERRO NA ENTRADA
+
 int main (){
     cin.tie(0);
     ios_base::sync_with_stdio(0);
@@ -28,6 +30,14 @@ int main (){
             pre_sum[i][j] = pre_sum[i][j-1] + f[i][j];    
     }
 
+    // cout << "forest:\n";
+    // for (int i = 0; i < n; i++){
+    //     for (int j = 0; j < n; j++)
+    //         cout << f[i][j] << " ";
+    //     cout << endl;
+    // }
+
+    // cout << "prefix sum:\n";
     // for (int i = 0; i < n; i++){
     //     for (int j = 0; j < n; j++)
     //         cout << pre_sum[i][j] << " ";
@@ -44,7 +54,7 @@ int main (){
             if (x1) ans += pre_sum[i][x2] - pre_sum[i][x1-1];
             else ans += pre_sum[i][x2];
         }
-        cout << ans << '\n';   
+        //cout << ans << '\n';   
     }
 
     return 0;
