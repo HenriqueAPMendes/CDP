@@ -18,7 +18,7 @@ int visit(int n){
         while(!q.empty()){
             int u = q.front(); q.pop();
             vis[u] = ans+1;
-            rep[ans+1] = u; // salva representante daquela componente
+            rep[ans+1] = u; // representante da componente
             used = true;
             for (auto &x : g[u])
                 if (!vis[x]) q.push(x);
@@ -42,21 +42,11 @@ int main(){
         g[v].push_back(u);
     }
 
-    // for (int i = 1; i <= n; i++){
-    //     cout << i << ": ";
-    //     for (auto &x : g[i]) cout << x << ' ';
-    //     cout << endl;
-    // }
-    // cout << endl;
-    // for (int i = 1; i <= n; i++) cout << vis[i] << ' ';
-    // cout << endl;
-
     int ans = visit(n)-1;
     cout << ans << endl;
-    for(int i = 1; i <= ans; i++){
+    for(int i = 1; i <= ans; i++)
         cout << rep[i] << ' ' << rep[i+1] << endl;
-    }
-    // create connections
+    
 
     return 0;
 }
