@@ -2,17 +2,15 @@
 using namespace std;
 
 map<char,int> used;
-char buff[1123456];
 
 void addChar(char c){
     if (used.count(c)) used[c]++;
-    else used.insert(make_pair(c,1));
+    else used[c]=1;
 }
 
 bool valid(string s){
     int n = s.length();
     bool odd = n%2;
-    bool even = !odd;
 
     used.clear();
 
@@ -21,23 +19,29 @@ bool valid(string s){
     
     int maxOdd = odd ? 1 : 0;
     int currentOdd = 0;
-    for (map<char,int>::iterator it = used.begin(); it != used.end(); it++)
-        if(it->second % 2) currentOdd++;
+    for (auto &c : used)
+        if(c.second % 2) currentOdd++;
     
     return (currentOdd == maxOdd);
 }
 
 void generatePalindrome(string s){
-    // two pointer
-    int n = s.length();
+    string ans = "";
+    char mid = '#';
 
-    int p = 0;
-    for (map<char,int>::iterator it = used.begin(); it != used.end(); it++){
-
-
+    for (auto &v : used) {
+        if (v.second % 2) mid = v.first;
+        for(int i = 0; i < v.second/2; i++) ans+=v.first;
+        v.second /= 2;
     }
-        
-    
+    if (mid != '#') ans += mid;
+
+    for (map<char,int>::reverse_iterator it = used.rbegin(); it != used.rend(); it++){
+        for (int i = 0; i < it->second; i++) ans+=it->first;
+    }
+
+    cout << ans << endl;
+
 }
 
 int main (){
