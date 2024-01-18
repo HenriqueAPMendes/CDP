@@ -21,7 +21,6 @@ int main (){
             cin >> c;
             if (c == '*') f[i][j] = 1;
         }
-            getchar(); // \n
     }
     
     for (int i = 0; i < n; i++){
@@ -54,7 +53,7 @@ int main (){
             if (x1) ans += pre_sum[i][x2] - pre_sum[i][x1-1];
             else ans += pre_sum[i][x2];
         }
-        //cout << ans << '\n';   
+        cout << ans << '\n';   
     }
 
     return 0;
