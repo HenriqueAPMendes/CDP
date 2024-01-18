@@ -10,8 +10,7 @@ void solve(int k){
         // cout << "rest: " << (k*y)%(y-k) << endl;
         if ((k*y)%(y-k)) continue;
         x = (k*y)/(y-k);
-        if (k == ((x*y)/(x+y)))
-            q.push({x,y});
+        q.push({x,y});
         
     }
     cout << q.size() << endl;
