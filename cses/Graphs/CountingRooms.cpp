@@ -30,14 +30,6 @@ int main (){
             if (c == '.') v[i][j] = 1;
         }
 
-    // for (int i = 0; i < n; i++){
-    //     for (int j = 0; j < m; j++){
-    //         cout << v[i][j] << ' ';
-    //     }
-    //     cout << endl;
-    // }
-
-    // cout << endl;
 
     int ans = 2;
     for (int i = 0; i < n; i++){
@@ -48,12 +40,6 @@ int main (){
         }
     }
 
-    // for (int i = 0; i < n; i++){
-    //     for (int j = 0; j < m; j++){
-    //         cout << v[i][j] << ' ';
-    //     }
-    //     cout << endl;
-    // }
 
     cout << ans-2 << endl;
 
