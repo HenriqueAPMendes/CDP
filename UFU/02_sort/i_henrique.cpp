@@ -14,7 +14,7 @@ signed main(){
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
     unordered_set<int> mapped;
-    vi yes, no;
+    vi v;
     
     wstring s;
     getline(wcin, s);
@@ -25,25 +25,12 @@ signed main(){
     
     getline(wcin, s);
     wstringstream ss2(s);
-    while(ss2 >> x){
-        // cout << x << endl;
-        if (mapped.count(x)) yes.push_back(x);
-        else no.push_back(x);
-    }
+    while(ss2 >> x)
+        v.push_back(x);
 
-    sort (yes.begin(), yes.end());
-    sort (no.begin(), no.end());
+    sort(v.begin(), v.end());
 
-    for (auto &i : no) cout << i << " Não está mapeado" << endl;
-    for (auto &i : yes) cout << i << " Está mapeado" << endl;
-
-    // while(cin >> v[i++]){}
-    // int qtd = i-1;
-    // for (int i = 0; i < qtd-2; i++) {
-    //     mapped.insert(v[i]);
-    // }
-    // for (auto &m : mapped) cout << m << ' ';
-    // cout << endl;
+    for (auto &i : v) cout << i << (mapped.count(i) ? " Está mapeado" : " Não está mapeado") << endl;
 
     return 0;
 }
