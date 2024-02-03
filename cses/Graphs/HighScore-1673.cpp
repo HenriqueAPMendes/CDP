@@ -4,36 +4,26 @@ using namespace std;
 #define int long long int
 #define endl '\n'
 #define ii pair<int,int>
+#define iii pair<int, ii>
 #define vi vector<int>
 
 #define INF 11234567890123
 
+vector<iii> edges;
 vector<vector<ii>> adj, adjT;
-vi vis, dist, order;
+vi vis1, vis2, dist, inv;
 
-int belmannFord(int s, int t, int n){
-    for (int i = 1; i <= n; i++) dist[i] = INF;
-    dist[s] = 0;
-    for (int i = 1; i <= n; i++)
-        for (int u = 1; u <= n; u++)
-            for (auto &[v,w] : adj[u])
-                dist[v] = min(dist[v], dist[u]+w);
-
-    return dist[n];
-}
 
 void dfs1(int u){
-    vis[u] = 1;
+    vis1[u] = 1;
     for (auto &[v,w] : adj[u])
-        if (!vis[v]) dfs1(v);
-    
-    order.push_back(u);
+        if (!vis1[v]) dfs1(v);
 }
 
-void dfs2(int u, int val){
-    vis[u] = val;
+void dfs2(int u){
+    vis2[u] = 1;
     for (auto &[v,w] : adjT[u])
-        if (!vis[v]) dfs2(v, val);
+        if (!vis2[v]) dfs2(v);
 }
 
 signed main(){
@@ -43,33 +33,40 @@ signed main(){
     int n, m;
     cin >> n >> m;
 
+    edges = vector<iii>(m);
     adj = adjT = vector<vector<ii>>(n+1);
-    dist = vis = vi(n+1);
+    dist = vis1 = vis2 = inv = vi(n+1);
 
-    while(m--){
+    for(int i = 0; i < m; i++){
         int u, v, w;
         cin >> u >> v >> w;
-        adj[u].push_back({v,-w});
-        adjT[v].push_back({u,-w});
+        w = -w;
+        adj[u].push_back({v,w});
+        adjT[v].push_back({u,w});
+        edges.push_back({w, {u,v}});
     }
 
-    int ans = -belmannFord(1, n, n);
+    for (int i = 2; i <= n; i++) dist[i] = INF;
 
-    for (int u = 1; u <= n; u++)
-        if (!vis[u]) dfs1(u);
+    for (int i = 0; i < n; i++)
+        for (auto &[w,uv] : edges){
+            int u = uv.first;
+            int v = uv.second;
+            dist[v] = min(dist[v], dist[u]+w);
+        }
 
-    vis.assign(n+1,0);
+    for (auto &[w, uv] : edges){
+        int u = uv.first;
+        int v = uv.second;
+        if (dist[u] + w < dist[v]) inv[v] = 1; // ????????
+    }
+            
+    dfs1(1);
+    dfs2(n);
 
-    reverse(order.begin(), order.end());
-    for (auto &u : order)
-        if (!vis[u]) dfs2(u,u);
+    bool ok = true;
 
-    bool hasPositiveCycle = false;
-    for (int u = 1; u <= n; u++)
-        for (auto &[v,w] : adj[u])
-            if (dist[v] > dist[u]+w && vis[u] == vis[1]) hasPositiveCycle = true; // if u and n are in the same SCC
-
-    if (hasPositiveCycle) cout << -1 << endl;
+    if (ok) cout << -1 << endl;
     else cout << ans << endl;
 
     // cout << ans << endl;
