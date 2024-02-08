@@ -44,7 +44,7 @@ signed main(){
         adj[u].push_back({v,w});
         adjT[v].push_back({u,w});
         edges.push_back({w, {u,v}});
-    }
+    } 
 
     for (int i = 2; i <= n; i++) dist[i] = INF;
 
