@@ -12,19 +12,20 @@ void solve(){
 
     vector<vi> partitions(k);
 
-    int npart = n/k;
-    if (n%k) {
+    int npart = n/k; // qtd of numbers per partition
+    if (n == 2 && k == 2) cout << "1 2" << endl;
+    else if (n%k) {
         npart++;
 
-        int part = n%k;
+        int part = n%k; // qtd of partitions with npart numbers
 
         for (int i = 0; i < n; i++){
-            if (i+1 <= npart*(n%k)){ // particoes de tamanho npart
+            if (i+1 <= npart*(n%k)) // npart sized partitions
                 partitions[i/npart].push_back(i+1);
-            }
+            
             else{
-                int remainder = i-(npart*(n%k));
-                int index = part + (remainder/(npart-1));
+                int remainder = i-(npart*(n%k)); // count after first npart sized partitions
+                int index = part + (remainder/(npart-1)); // offset
                 partitions[index].push_back(i+1);
             }
         }
