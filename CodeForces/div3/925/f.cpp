@@ -10,28 +10,35 @@ using namespace std;
 vector<vi> adj;
 vi vis;
 int n;
+vi ts;
+vector<ii> conditions;
 
-// is there a cycle on the graph?
-//FALTOU TEMPO
 
-bool dfs(int u, int p){
+void dfs(int u){
+    if(vis[u]) return;
     vis[u] = 1;
-    for (auto &v : adj[u]){
-        if(!vis[v]) return dfs(v,u);
-        else if (v != p) {
-            cout << "found cycle" << endl;
-            return false;
-        }
-    }
-    return true;
+    for (auto &v : adj[u])
+        if (!vis[v]) dfs(v);
+    
+    ts.push_back(u);
 }
 
-bool cycle(){
-    bool ans = true;
+bool topological_sort(){
+    ts.clear();
+
     for (int i = 1; i <= n; i++)
-        if (!vis[i]) ans &= dfs(i, -1);
+        dfs(i);
     
-    return !ans;
+    for (auto &x : ts) cout  << x << ' '; cout << endl;
+    reverse(ts.begin(), ts.end());
+    vi priority(n+1);
+    cout << ts.size() << ' ' << n << endl;
+    // for (int i = 0; i < ts.size(); i++) priority[ts[i]] = i;
+    
+    for (auto &[f,s] : conditions)
+        if (priority[f] > priority[s]) return false;
+    
+    return true;
 }
 
 
@@ -46,10 +53,14 @@ void solve(){
     for (int i = 0; i < k; i++){
         for (int j = 0; j < n; j++) cin >> a[i];
 
-        for (int j = 1; j < n-1; j++) adj[a[i]].push_back(a[i+1]);
+        for (int j = 1; j < n-2; j++) {
+
+            adj[a[i]].push_back(a[i+1]);
+            conditions.push_back({a[i], a[i+1]});
+        }
     }
 
-    bool valid = cycle();
+    bool valid = topological_sort();
     cout << (valid ? "YES" : "NO") << endl;
 }
 
