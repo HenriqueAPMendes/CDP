@@ -10,12 +10,11 @@ void solve(){
     int n; cin >> n;
     vi signs(n);
     for (int i = 0; i < n; i++) cin >> signs[i];
-    int ans = 0, currentYear = 1;
-    for (int i = 0; i < n; i++){
-        while(currentYear % signs[i] != 0) currentYear++;
-        currentYear++;
+    int ans = signs[0];
+    for (int i = 1; i < n; i++){
+        ans += (signs[i]-ans%signs[i]);
     }
-    cout << currentYear-1 << endl;
+    cout << ans << endl;
 }
 
 signed main(){

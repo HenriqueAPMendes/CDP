@@ -11,7 +11,7 @@ void solve(){
     int n, m;
     cin >> n >> m;
     vi a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) cin >> a[i], a[i] %= m;
     string s; cin >> s;
     
     int prod = 1;
@@ -21,9 +21,11 @@ void solve(){
     for (int i = 0; i < s.length(); i++){
         cout << prod%m << ' ';
         if (s[i] == 'L')
-            prod /= a[left++];
+            if (a[left] != 0) prod /= a[left++];
+            else left++;
         else 
-            prod /= a[right--];
+            if (a[right] != 0) prod /= a[right--];
+            else right--;
     }
     cout << endl;
 }
