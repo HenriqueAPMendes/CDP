@@ -5,23 +5,16 @@ using namespace std;
 #define endl '\n'
 #define vi vector<int>
 
-void printst(multiset<int> st){
-    cout << "set: ";
-    for (auto x : st) cout << x << ' ';
-    cout << endl; 
-}
-
 int calcCost(vi v, int d){
     int m = v.size();
     vi dp(m, 1e9);
     multiset<int> st = {1};
     dp[0] = 1; // initial cost
     for (int i = 1; i < m-1; i++){
-        dp[i] = *st.begin() + v[i] + 1; // current cost is min cost until now plus this cost
+        dp[i] = *st.begin() + v[i] + 1; // current cost is min cost from the d+1 last positions until now plus this cost
         if (i - d - 1 >= 0)
-            st.erase(st.find(dp[i-d-1])); // remove cost from the d distance to the left ???
-        st.insert(dp[i]); // add current cost ???
-        printst(st);
+            st.erase(st.find(dp[i-d-1])); // remove cost from the d distance to the left to update next
+        st.insert(dp[i]); // add current cost
     }
     dp[m-1] = 1 + *st.begin();
     return dp[m-1];
