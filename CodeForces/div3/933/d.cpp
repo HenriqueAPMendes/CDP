@@ -8,12 +8,16 @@ using namespace std;
 int clockwise (int start, int dist, int n){
     int ans = start + dist;
     if (ans > n) ans %= n;
+    // cout << "clockwise: ";
+    // cout << start << ' ' << dist << ' ' << n << ' ' << ans << endl;
     return ans;
 }
 
 int counterclockwise (int start, int dist, int n){
     int ans = start - dist;
-    if (ans < 1) ans = n - ans;
+    if (ans < 1) ans = n + ans;
+    // cout << "counterclockwise: ";
+    // cout << start << ' ' << dist << ' ' << n << ' ' << ans << endl;
     return ans;
 }
 
@@ -31,7 +35,7 @@ void solve(){
                 possibilities[i+1].insert(clockwise(player, dist, n));
         else if (direction == '1')
             for (auto player : possibilities[i]) 
-                possibilities[i+1].insert(clockwise(player, dist, n));
+                possibilities[i+1].insert(counterclockwise(player, dist, n));
         else 
             for (auto player : possibilities[i]) {
                 possibilities[i+1].insert(clockwise(player, dist, n));
