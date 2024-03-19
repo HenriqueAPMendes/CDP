@@ -4,38 +4,48 @@ using namespace std;
 #define int long long int
 #define endl '\n'
 #define vi vector<int>
-#define MAX 212345
 #define INF 123456789012345
 
-
-void solve(){
+void solve() {
     int n, m;
     cin >> n >> m;
-    vector<vi> adj(MAX+n);
-    while(m--){
+    vector<vi> g(n+m+1);
+    map<int, int> color;
+    int curr = n + 1;
+    for (int i = 0; i < m;i++) {
         int a, b, c;
         cin >> a >> b >> c;
-        adj[a].push_back(c+n);
-        adj[b].push_back(c+n);
-        adj[c+n].push_back(a);
-        adj[c+n].push_back(b);
+        if (color[c] == 0)
+            color[c] = curr++;
+        
+        c = color[c];
+        g[a].push_back(c);
+        g[b].push_back(c);
+        g[c].push_back(a);
+        g[c].push_back(b);
     }
+
     int s, t;
     cin >> s >> t;
-    vi dist(MAX+n, INF);
-    dist[s] = 0;
-    queue<int> q; q.push(s);
-    while(!q.empty()){
+
+    queue<int> q;
+    q.push(s);
+    vi d(n+m+1, INF);
+    d[s] = 0;
+    while (!q.empty()) {
         int u = q.front(); q.pop();
-        for (auto v : adj[u]){
-            if (dist[v] == INF) {
-                dist[v] = dist[u]+1;
+        for (auto v : g[u]) {
+            if (d[v] == INF) {
                 q.push(v);
+                d[v] = d[u] + 1;
             }
         }
-        
+ 
     }
-    cout << dist[t]/2 << endl;
+    cout << d[t] / 2 << endl;
+ 
+ 
+ 
 }
 
 signed main(){
