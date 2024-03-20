@@ -1,31 +1,17 @@
 {
-  "done": [
-    {
-      "url": "url1"
-    },
-    {
-      "url": "url2"
-    },
-    {
-      "url": "url3"
-    },
-    {
-      "url": "url4"
-    }
-  ],
+  "done": [],
   "undone": [
     {
-      "url": "url1",
-      "categories": ["dp", "graphs"]
+      "url": "https://codeforces.com/contest/1945/problem/E",
+      "categories": [
+        "binarySearch"
+      ]
     },
     {
-      "url": "url2"
-    },
-    {
-      "url": "url3"
-    },
-    {
-      "url": "url4"
+      "url": "https://codeforces.com/contest/1945/problem/F",
+      "categories": [
+        "sort"
+      ]
     }
   ]
 }
