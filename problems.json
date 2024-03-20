@@ -1,0 +1,31 @@
+{
+  "done": [
+    {
+      "url": "url1"
+    },
+    {
+      "url": "url2"
+    },
+    {
+      "url": "url3"
+    },
+    {
+      "url": "url4"
+    }
+  ],
+  "undone": [
+    {
+      "url": "url1",
+      "categories": ["dp", "graphs"]
+    },
+    {
+      "url": "url2"
+    },
+    {
+      "url": "url3"
+    },
+    {
+      "url": "url4"
+    }
+  ]
+}
