@@ -12,8 +12,8 @@ def getRandomProblem():
     try:
         if len(undone[index]['categories']) > 0:
             print('CATEGORIES:')
-            for cat in undone[0]['categories']:
-                print(cat)
+            for cat in undone[index]['categories']:
+                print('  ', cat)
     except:
         sys.exit(0)
 
@@ -27,7 +27,7 @@ def getFirstProblem():
         if len(undone[0]['categories']) > 0:
             print('CATEGORIES:')
             for cat in undone[0]['categories']:
-                print(cat)
+                print('  ', cat)
     except:
         sys.exit(0)
 

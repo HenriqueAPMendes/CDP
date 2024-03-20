@@ -1,53 +1,72 @@
 import json
 import sys
 
+def printDone(data):
+    done = data['done']
+    print("DONE problems:")
+    for p in done:
+        print("url:", p['url'])
+        try:
+            if len(p['categories']) > 0:
+                print('CATEGORIES:')
+                for cat in p['categories']:
+                    print('  ', cat)
+        except:
+            print()
+            continue
+        finally:
+            print()
+
+def printUndone(data):
+    undone = data['undone']
+    print("UNDONE problems:")
+    for p in undone:
+        print("url:", p['url'])
+        try:
+            if len(p['categories']) > 0:
+                print('CATEGORIES:')
+                for cat in p['categories']:
+                    print('  ', cat)
+        except:
+            print('\n')
+            continue
+        finally:
+            print()
+
 def listDone():
     with open('problems.json', 'r') as file:
         data = json.load(file)
 
-    done = data['done']
+    printDone(data)
 
-    print("done problems:")
-    for p in done:
-        print(p)
+   
 
 def listUndone():
     with open('problems.json', 'r') as file:
         data = json.load(file)
 
-    undone = data['undone']
-   
-    print("undone problems:")
-    for p in undone:
-        print(p)
+    printUndone(data)
 
 
 def listAll():
     with open('problems.json', 'r') as file:
         data = json.load(file)
 
-    undone = data['undone']
-    done = data['done']
-
-    print("done problems:")
-    for p in done:
-        print(p)
-    print("undone problems:")
-    for p in undone:
-        print(p)
+    printDone(data)
+    printUndone(data)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 listproblems.py <option>")
+    if len(sys.argv) < 2:
+        listUndone()
         sys.exit(1)
 
     mode = sys.argv[1]
-    if mode == "done":
+    if mode == "--done" or mode == "-d":
         listDone()
-    elif mode == "undone":
+    elif mode == "--undone" or mode == "-u":
         listUndone()
-    elif mode == "all":
+    elif mode == "--all" or mode == "-a":
         listAll()
     else:
         print("Unkown option", mode)

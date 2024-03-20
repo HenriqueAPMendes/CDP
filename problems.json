@@ -1,17 +1,38 @@
 {
-  "done": [],
+  "done": [
+    {
+      "url": "https://codeforces.com/contest/1945/problem/A"
+    },
+    {
+      "url": "https://codeforces.com/contest/1945/problem/B"
+    },
+    {
+      "url": "https://codeforces.com/contest/1945/problem/C"
+    },
+    {
+      "url": "https://codeforces.com/contest/1945/problem/D"
+    }
+  ],
   "undone": [
     {
       "url": "https://codeforces.com/contest/1945/problem/E",
-      "categories": [
-        "binarySearch"
-      ]
+      "categories": ["binarySearch"]
     },
     {
       "url": "https://codeforces.com/contest/1945/problem/F",
-      "categories": [
-        "sort"
-      ]
+      "categories": ["sort"]
+    },
+    {
+      "url": "https://codeforces.com/contest/500/problem/A",
+      "categories": ["arrays"]
+    },
+    {
+      "url": "https://codeforces.com/problemset/problem/814/D",
+      "categories": ["convexHull", "KMP"]
+    },
+    {
+      "url": "https://codeforces.com/problemset/problem/1017/E",
+      "categories": ["dp", "FechoTransitivo"]
     }
   ]
 }
