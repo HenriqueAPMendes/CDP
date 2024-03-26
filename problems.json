@@ -16,23 +16,43 @@
   "undone": [
     {
       "url": "https://codeforces.com/contest/1945/problem/E",
-      "categories": ["binarySearch"]
+      "categories": [
+        "binarySearch"
+      ]
     },
     {
       "url": "https://codeforces.com/contest/1945/problem/F",
-      "categories": ["sort"]
+      "categories": [
+        "sort"
+      ]
     },
     {
       "url": "https://codeforces.com/contest/500/problem/A",
-      "categories": ["arrays"]
+      "categories": [
+        "arrays"
+      ]
     },
     {
       "url": "https://codeforces.com/problemset/problem/814/D",
-      "categories": ["convexHull", "KMP"]
+      "categories": [
+        "convexHull",
+        "KMP"
+      ]
     },
     {
       "url": "https://codeforces.com/problemset/problem/1017/E",
-      "categories": ["dp", "FechoTransitivo"]
+      "categories": [
+        "dp",
+        "FechoTransitivo"
+      ]
+    },
+    {
+      "url": "https://codeforces.com/contest/776/problem/D",
+      "categories": [
+        "graphs",
+        "scc",
+        "2sat"
+      ]
     }
   ]
 }
