@@ -53,6 +53,13 @@
         "scc",
         "2sat"
       ]
+    },
+    {
+      "url": "https://codeforces.com/problemset/problem/1012/C",
+      "categories": [
+        "dp",
+        "div1C"
+      ]
     }
   ]
 }
