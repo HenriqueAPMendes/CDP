@@ -11,6 +11,14 @@
     },
     {
       "url": "https://codeforces.com/contest/1945/problem/D"
+    },
+    {
+      "url": "https://codeforces.com/contest/776/problem/D",
+      "categories": [
+        "graphs",
+        "scc",
+        "2sat"
+      ]
     }
   ],
   "undone": [
@@ -47,18 +55,18 @@
       ]
     },
     {
-      "url": "https://codeforces.com/contest/776/problem/D",
-      "categories": [
-        "graphs",
-        "scc",
-        "2sat"
-      ]
-    },
-    {
       "url": "https://codeforces.com/problemset/problem/1012/C",
       "categories": [
         "dp",
         "div1C"
+      ]
+    },
+    {
+      "url": "https://cses.fi/problemset/task/1684",
+      "categories": [
+        "graphs",
+        "scc",
+        "2sat"
       ]
     }
   ]
