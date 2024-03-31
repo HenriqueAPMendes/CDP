@@ -74,35 +74,18 @@ int main(){
         if (!comp[u]) dfs2(u, ++c);
     
     bool ok = true;
-    for (int i = 0; i < m; i++)
+    vi ans(m);
+    for (int i = 0; i < m; i++){
         if (comp[i] == comp[i+m]) ok = false;
+        ans[i] = (comp[i] > comp[i+m] ? 1 : 0);
+    }
     
     if (!ok) { cout << "IMPOSSIBLE" << endl; return 0; }
 
-    // atribuir valores atraves do grafo
-    vis.assign(2*m,0);
-    for (auto x : ts) cout << x << ' '; cout << endl;
-    for (auto u : ts){
-        if (u < m){
-            if (vis[u+m]) continue;
-            else vis[u] = 1;
-        }
-        else vis[u] = 1;
-    }
-
-    for (int i = 0; i < m; i++){
-        if (vis[i]) cout << "- ";
-        else cout << "+ ";
-    }
+    for (int i = 0; i < m; i++)
+        cout << (ans[i] == 1 ? "+ " : "- ");
     cout << endl;
-        
     
-
-    // for (int i = 0; i < m; i++){
-    //     if (val_per_component[comp[i]] == PLUS) cout << "+ ";
-    //     else cout << "- ";
-    // }
-    // cout << endl;
 
     return 0;
 }
