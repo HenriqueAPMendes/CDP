@@ -9,6 +9,7 @@ using namespace std;
 #define PLUS 1
 #define MINUS 2
 
+int n, m;
 vector<vi> adj, adjT;
 vi comp, vis, ts;
 
@@ -25,17 +26,10 @@ void dfs2(int u, int c){
         if (!comp[v]) dfs2(v, c);
 }
 
-void dfs3(int u, int c){
-    comp[u] = c;
-    for (auto v : adj[u])
-        if (!comp[v]) dfs2(v, c);
-}
-
 int main(){
     cin.tie(0); cout.tie(0);
     ios_base::sync_with_stdio(0);
 
-    int n, m;
     cin >> n >> m;
     adj = adjT = vector<vi>(2*m);
     comp = vis = vi(2*m);
@@ -75,8 +69,9 @@ int main(){
         if (!vis[i]) dfs1(i);
 
     reverse(ts.begin(), ts.end());
+    int c = 0;
     for (auto u : ts)
-        if (!comp[u]) dfs2(u, u+1);
+        if (!comp[u]) dfs2(u, ++c);
     
     bool ok = true;
     for (int i = 0; i < m; i++)
@@ -85,15 +80,29 @@ int main(){
     if (!ok) { cout << "IMPOSSIBLE" << endl; return 0; }
 
     // atribuir valores atraves do grafo
-    for (auto v : ts){
-        
+    vis.assign(2*m,0);
+    for (auto x : ts) cout << x << ' '; cout << endl;
+    for (auto u : ts){
+        if (u < m){
+            if (vis[u+m]) continue;
+            else vis[u] = 1;
+        }
+        else vis[u] = 1;
     }
 
     for (int i = 0; i < m; i++){
-        if (comp[i] == PLUS) cout << "+ ";
-        else cout << "- ";
+        if (vis[i]) cout << "- ";
+        else cout << "+ ";
     }
     cout << endl;
+        
+    
+
+    // for (int i = 0; i < m; i++){
+    //     if (val_per_component[comp[i]] == PLUS) cout << "+ ";
+    //     else cout << "- ";
+    // }
+    // cout << endl;
 
     return 0;
 }
