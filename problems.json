@@ -19,6 +19,14 @@
         "scc",
         "2sat"
       ]
+    },
+    {
+      "url": "https://cses.fi/problemset/task/1684",
+      "categories": [
+        "graphs",
+        "scc",
+        "2sat"
+      ]
     }
   ],
   "undone": [
@@ -59,14 +67,6 @@
       "categories": [
         "dp",
         "div1C"
-      ]
-    },
-    {
-      "url": "https://cses.fi/problemset/task/1684",
-      "categories": [
-        "graphs",
-        "scc",
-        "2sat"
       ]
     }
   ]
