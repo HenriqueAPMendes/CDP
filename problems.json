@@ -68,6 +68,12 @@
         "dp",
         "div1C"
       ]
+    },
+    {
+      "url": "https://cses.fi/problemset/task/1625",
+      "categories": [
+        "backtracking"
+      ]
     }
   ]
 }
