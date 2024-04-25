@@ -27,6 +27,9 @@
         "scc",
         "2sat"
       ]
+    },
+    {
+      "url": "https://codeforces.com/contest/1669/problem/E"
     }
   ],
   "undone": [
@@ -73,6 +76,14 @@
       "url": "https://cses.fi/problemset/task/1625",
       "categories": [
         "backtracking"
+      ]
+    },
+    {
+      "url": "https://codeforces.com/contest/808/problem/G",
+      "categories": [
+        "dp",
+        "kmp",
+        "strings"
       ]
     }
   ]

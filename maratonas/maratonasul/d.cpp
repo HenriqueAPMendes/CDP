@@ -26,7 +26,7 @@ signed main(){
     for (int i = 0; i < p; i++)
         cin >> scarves[i];
     
-    // recursao
+        
 
     return 0;
 }

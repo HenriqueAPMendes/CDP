@@ -19,6 +19,7 @@ void belmann_ford(){
         for (int u = 1; u <= n; u++)
             for (auto &[w,v] : adj[u]){
                 if (d[v] > d[u]+w){
+                    cout << u << ' ' << v << endl;
                     d[v] = d[u]+w;
                     p[v] = u;
                 }
@@ -45,6 +46,8 @@ signed main(){
     }
 
     belmann_ford();
+    for (int i = 1; i <= n; i++) cout << d[i] << ' ';
+    cout << endl;
 
     bool hasNegativeCycle = false;
     int first;
