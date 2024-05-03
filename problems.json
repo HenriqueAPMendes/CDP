@@ -85,6 +85,14 @@
         "kmp",
         "strings"
       ]
+    },
+    {
+      "url": "https://cses.fi/problemset/task/2217",
+      "categories": [
+        "array",
+        "sorting",
+        "segtree"
+      ]
     }
   ]
 }

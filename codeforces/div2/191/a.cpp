@@ -9,23 +9,24 @@ int main(){
 
 	int n; cin >> n;
 	vi v(n), presum(n);
-
-	for (int i = 0; i < n; i++) cin >> v[i];
 	int initialSum = 0;
-	
-	presum[0] = v[0];
-	for (int i = 1; i < n; i++)
-		presum[i] = presum[i-1] + v[i];
-
-	int maxD = -123456789, minD = 112345678;
-	for (int i = 0; i < n; i++){
+	for (int i = 0; i < n; i++){ 
+		cin >> v[i];
 		initialSum += v[i];
-		int delta = i + 1 - 2*presum[i];
-		maxD = max(maxD, delta);
-		minD = min(minD, delta);
+		if (v[i]) v[i] = -1;
+		else v[i] = 1;
 	}
-	if (maxD < 0) cout << initialSum-1 << endl; 
-	else cout << initialSum + maxD - minD << endl;
+
+	// calc max subarray sum on v
+	int ans;
+	vi maxSum(n);
+	ans = maxSum[0] = v[0];
+	for (int i = 1; i < n; i++){
+		maxSum[i] = max(maxSum[i-1]+v[i], v[i]);
+		ans = max(maxSum[i], ans);
+	}
+
+	cout << initialSum + ans << endl;
 	
 	return 0;
 }
