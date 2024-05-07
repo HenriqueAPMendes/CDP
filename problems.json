@@ -93,6 +93,13 @@
         "sorting",
         "segtree"
       ]
+    },
+    {
+      "url": "https://codeforces.com/problemset/problem/623/A",
+      "categories": [
+        "graphs",
+        "strings"
+      ]
     }
   ]
 }
